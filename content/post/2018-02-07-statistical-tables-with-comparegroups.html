@@ -1,0 +1,98 @@
+---
+title: Statistical Tables with compareGroups
+author: Agustin Calatroni
+date: '2018-02-07'
+slug: statistical-tables-with-comparegroups
+categories:
+  - R
+tags:
+  - table
+---
+
+
+
+<p>This is a quick example of how to create a manuscript table using <code>compareGroups</code> package</p>
+<div id="load-packages" class="section level2">
+<h2>Load packages</h2>
+<pre class="r"><code>pacman::p_load(tidyverse)
+pacman::p_load(compareGroups)</code></pre>
+</div>
+<div id="import-data" class="section level2">
+<h2>Import data</h2>
+<p>The sepsis data is a simulated clinical trial for 470 participants with two treatment groups.</p>
+<pre class="r"><code>load(url(&quot;https://github.com/prise6/aVirtualTwins/blob/master/data/sepsis.rdata?raw=true&quot;))</code></pre>
+</div>
+<div id="create-table" class="section level2">
+<h2>Create table</h2>
+<div id="default-table" class="section level3">
+<h3>Default Table</h3>
+<pre class="r"><code>compareGroups(THERAPY ~ ., data = sepsis) %&gt;% 
+  createTable()</code></pre>
+<pre><code>
+--------Summary descriptives table by &#39;THERAPY&#39;---------
+
+_______________________________________________ 
+                0             1       p.overall 
+              N=153         N=317               
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+survival:                               0.194   
+    0      101 (66.0%)   188 (59.3%)            
+    1      52 (34.0%)    129 (40.7%)            
+PRAPACHE   25.1 (7.36)   25.4 (7.64)    0.684   
+AGE        59.1 (16.3)   60.2 (16.5)    0.497   
+BLGCS      11.6 (3.79)   11.6 (3.74)    0.896   
+ORGANNUM   2.35 (1.02)   2.49 (1.10)    0.168   
+BLIL6     16562 (62123) 24320 (76627)   0.242   
+BLLPLAT     215 (151)     181 (146)     0.025   
+BLLBILI    2.68 (4.86)   2.74 (4.76)    0.904   
+BLLCREAT   3.02 (4.65)   3.14 (4.63)    0.783   
+TIMFIRST   350 (1047)     245 (868)     0.283   
+BLADL      2.42 (4.04)   2.68 (4.06)    0.525   
+blSOFA     8.10 (3.14)   8.79 (3.44)    0.031   
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
+</div>
+<div id="automatically-select-distribution" class="section level3">
+<h3>Automatically select distribution</h3>
+<pre class="r"><code>compareGroups(THERAPY ~ ., data = sepsis,
+              method = NA, alpha = 0.01) %&gt;% 
+  createTable()</code></pre>
+<pre><code>
+--------Summary descriptives table by &#39;THERAPY&#39;---------
+
+_____________________________________________________ 
+                 0                1         p.overall 
+               N=153            N=317                 
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+survival:                                     0.194   
+    0       101 (66.0%)      188 (59.3%)              
+    1        52 (34.0%)      129 (40.7%)              
+PRAPACHE  23.0 [19.0;28.0] 23.0 [19.0;29.0]   0.669   
+AGE       59.9 [46.5;68.8] 59.9 [46.5;73.1]   0.449   
+BLGCS     13.0 [9.00;15.0] 13.0 [10.0;15.0]   0.986   
+ORGANNUM  2.00 [2.00;3.00] 2.00 [2.00;3.00]   0.223   
+BLIL6      407 [163;2568]   407 [119;2568]    0.779   
+BLLPLAT    172 [109;284]    137 [92.0;217]    0.002   
+BLLBILI   0.90 [0.60;2.50] 1.20 [0.60;2.50]   0.190   
+BLLCREAT  1.40 [1.00;3.00] 1.60 [1.10;3.00]   0.054   
+TIMFIRST  30.7 [19.3;44.7] 30.7 [19.3;50.7]   0.577   
+BLADL     0.00 [0.00;4.00] 0.00 [0.00;5.00]   0.391   
+blSOFA    8.00 [5.00;10.0] 8.00 [6.00;11.0]   0.054   
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
+</div>
+<div id="show-or" class="section level3">
+<h3>Show OR</h3>
+<pre class="r"><code>compareGroups(THERAPY ~ survival, data = sepsis) %&gt;% 
+  createTable(show.ratio = TRUE, show.p.overall = FALSE)</code></pre>
+<pre><code>
+--------Summary descriptives table by &#39;THERAPY&#39;---------
+
+__________________________________________________________ 
+               0           1             OR        p.ratio 
+             N=153       N=317                             
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+survival:                                                  
+    0     101 (66.0%) 188 (59.3%)       Ref.        Ref.   
+    1     52 (34.0%)  129 (40.7%) 1.33 [0.89;2.00]  0.163  
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
+</div>
+</div>

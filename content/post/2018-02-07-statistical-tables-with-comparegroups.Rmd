@@ -1,0 +1,55 @@
+---
+title: Statistical Tables with compareGroups
+author: Agustin Calatroni
+date: '2018-02-07'
+slug: statistical-tables-with-comparegroups
+categories:
+  - R
+tags:
+  - table
+---
+
+```{r knitr setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, comment = NA)
+knitr::opts_chunk$set(cache = FALSE)
+```
+
+This is a quick example of how to create a manuscript table using `compareGroups` package
+
+## Load packages
+```{r}
+pacman::p_load(tidyverse)
+pacman::p_load(compareGroups)
+```
+
+## Import data
+
+The sepsis data is a simulated clinical trial for 470 participants with two treatment groups.
+
+```{r}
+load(url("https://github.com/prise6/aVirtualTwins/blob/master/data/sepsis.rdata?raw=true"))
+```
+
+## Create table
+
+### Default Table
+
+```{r}
+compareGroups(THERAPY ~ ., data = sepsis) %>% 
+  createTable()
+```
+
+### Automatically select distribution
+
+```{r}
+compareGroups(THERAPY ~ ., data = sepsis,
+              method = NA, alpha = 0.01) %>% 
+  createTable()
+```
+
+### Show OR
+
+```{r}
+compareGroups(THERAPY ~ survival, data = sepsis) %>% 
+  createTable(show.ratio = TRUE, show.p.overall = FALSE)
+```
