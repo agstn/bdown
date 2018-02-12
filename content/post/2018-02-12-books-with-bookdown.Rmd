@@ -69,10 +69,20 @@ bookdown <- tribble(
 ```
 
 ```{r echo=FALSE}
-bookdown %>% 
+d1 <- bookdown %>% 
   arrange(Title) %>% 
   datatable(filter = 'top',
             rownames = FALSE,
             options = list(pageLength = 15)
   )
+d1
 ```
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(htmlwidgets)
+library(htmltools)
+
+htmlwidgets::saveWidget(d1, file = "d1.html", selfcontained = TRUE)
+```
+
+<iframe seamless src="../d1/index.html" width="100%" height="500"></iframe>
