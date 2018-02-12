@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Table on Agustin Calatroni</title>
-    <link>https://acalatroni.netlify.com/tags/table/</link>
+    <link>/tags/table/</link>
     <description>Recent content in Table on Agustin Calatroni</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://acalatroni.netlify.com/tags/table/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/table/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Statistical Tables with compareGroups</title>
-      <link>https://acalatroni.netlify.com/2018/02/statistical-tables-with-comparegroups/</link>
+      <link>/2018/02/statistical-tables-with-comparegroups/</link>
       <pubDate>Wed, 07 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://acalatroni.netlify.com/2018/02/statistical-tables-with-comparegroups/</guid>
+      <guid>/2018/02/statistical-tables-with-comparegroups/</guid>
       <description>This is a quick example of how to create a manuscript table using compareGroups package
 Load packagespacman::p_load(tidyverse)pacman::p_load(compareGroups)Import dataThe sepsis data is a simulated clinical trial for 470 participants with two treatment groups.
 load(url(&amp;quot;https://github.com/prise6/aVirtualTwins/blob/master/data/sepsis.rdata?raw=true&amp;quot;))Create tableDefault TablecompareGroups(THERAPY ~ ., data = sepsis) %&amp;gt;% createTable()--------Summary descriptives table by &amp;#39;THERAPY&amp;#39;---------_______________________________________________ 0 1 p.overall N=153 N=317 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ survival: 0.194 0 101 (66.0%) 188 (59.</description>

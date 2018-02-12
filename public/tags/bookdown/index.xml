@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bookdown on Agustin Calatroni</title>
+    <link>/tags/bookdown/</link>
+    <description>Recent content in Bookdown on Agustin Calatroni</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/bookdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Books with Bookdown</title>
+      <link>/2018/02/books-with-bookdown/</link>
+      <pubDate>Mon, 12 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/02/books-with-bookdown/</guid>
+      <description>There is a large amount of free resource available to learn R. Once such resource is the books created by authors using the bookdown by Yihui Xie package. The bookdown package is built on top of R Markdown. Below I have created a table with those references that I had or plan to read. They go from a fantastic introduction to ggplot2 or data science to more technical in nature as the Advance R by Hadley Wickham.</description>
+    </item>
+    
+  </channel>
+</rss>

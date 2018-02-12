@@ -1,0 +1,78 @@
+---
+title: Books with Bookdown
+author: Agustin Calatroni
+date: '2018-02-12'
+slug: books-with-bookdown
+categories:
+  - R
+tags:
+  - bookdown
+  - books
+---
+
+There is a large amount of free resource available to learn R. Once such resource is the books created by authors using the [bookdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie package. The bookdown package is built on top of R Markdown. Below I have created a table with those references that I had or plan to read. They go from a fantastic introduction to `ggplot2` or data science to more technical in nature as the Advance R by Hadley Wickham. As I discoved more resources I will be updating the table. Happy learning.
+
+```{r include=FALSE}
+library(tidyverse)
+library(DT)
+```
+
+```{r include=FALSE}
+bookdown <- tribble(
+  ~Title, ~Author,  ~Link,
+  
+  "R for Data Science",
+  "Garrett Grolemund and Hadley Wickham",
+  "http://r4ds.had.co.nz",
+    
+  "Mastering Software Development in R",
+  "Roger D. Peng, Sean Kross, and Brooke Anderson",
+  "https://bookdown.org/rdpeng/RProgDA/",
+
+  "YaRrr! The Pirate’s Guide to R",
+  "Nathaniel D. Phillips",
+  "https://bookdown.org/ndphillips/YaRrr/",
+    
+  "The Unix Workbench", 
+  "Sean Kross", 
+  "https://bookdown.org/sean/the-unix-workbench/",
+  
+  "Advanced R", 
+  "Hadley Wickham", 
+  "https://adv-r.hadley.nz/",
+    
+  "Technical Foundations of Informatics",
+  "Michael Freeman and Joel Ross",
+  "https://info201.github.io/",
+  
+  "Circular Visualization in R", 
+  "Zuguang Gu", 
+  "http://zuguang.de/circlize_book/book/",
+  
+  "Data Visualization A practical introduction",
+  "Kieran Healy",
+  "http://socviz.co/",
+  
+  "Introduction à R et au tidyverse",
+  "Julien Barnier",
+  "https://juba.github.io/tidyverse/",
+    
+  "plotly for R",
+  "Carson Sievert",
+  "https://plotly-book.cpsievert.me/",
+    
+  "Interpretable Machine Learning",
+  "Christoph Molnar",
+  "https://christophm.github.io/interpretable-ml-book/"
+    
+)
+```
+
+```{r echo=FALSE}
+bookdown %>% 
+  arrange(Title) %>% 
+  datatable(filter = 'top',
+            rownames = FALSE,
+            options = list(pageLength = 15)
+  )
+```
