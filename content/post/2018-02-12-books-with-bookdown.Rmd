@@ -63,26 +63,18 @@ bookdown <- tribble(
     
   "Interpretable Machine Learning",
   "Christoph Molnar",
-  "https://christophm.github.io/interpretable-ml-book/"
-    
+  "https://christophm.github.io/interpretable-ml-book/",
+  
+  "Broadening Your Statistical Horizons",
+  "J. Legler and P. Roback",
+  "https://bookdown.org/roback/bookdown-bysh/"
 )
 ```
 
 ```{r echo=FALSE}
-d1 <- bookdown %>% 
+bookdown %>% 
   arrange(Title) %>% 
-  datatable(filter = 'top',
-            rownames = FALSE,
-            options = list(pageLength = 15)
-  )
-d1
+  mutate(Title = paste0("[",Title, "](",Link, ")")) %>% 
+  select(-Link) %>% 
+  knitr::kable()
 ```
-
-```{r, message=FALSE, warning=FALSE, include=FALSE}
-library(htmlwidgets)
-library(htmltools)
-
-htmlwidgets::saveWidget(d1, file = "d1.html", selfcontained = TRUE)
-```
-
-<iframe seamless src="../d1/index.html" width="100%" height="500"></iframe>
